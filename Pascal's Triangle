@@ -1,0 +1,22 @@
+vector<vector<int>> generate(int numRows) {
+        if(numRows==1)
+            return {{1}};
+
+        vector<vector<int>>ans;
+        ans.push_back({1});
+        for(int i=1;i<numRows;i++)
+        {
+            vector<int>temp;
+            for(int j=0;j<i+1;j++)
+            {
+                int num=0;
+                if(j-1>=0 && j-1<ans[i-1].size())
+                    num+=ans[i-1][j-1];
+                if(j<ans[i-1].size())
+                    num+=ans[i-1][j];
+                temp.push_back(num);
+            }
+            ans.push_back(temp);
+        }
+        return ans;
+    }
