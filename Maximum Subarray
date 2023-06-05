@@ -1,0 +1,25 @@
+// It does not work for all -ve numbers, it returns 0 in that case.
+    // int maxSubArray(vector<int>& nums) {
+    //     int n=nums.size();
+    //     int currSum=0,maxSoFar=INT_MIN;
+    //     for(int i=0;i<n;i++)
+    //     {
+    //         currSum+=nums[i];
+    //         if(currSum<0)
+    //             currSum=0;
+    //         maxSoFar=max(maxSoFar,currSum);
+    //     }
+    //     return maxSoFar;
+    // }
+
+    int maxSubArray(vector<int>&nums)
+    {
+        int n=nums.size();
+        int currSum=nums[0],maxSoFar=nums[0];
+        for(int i=1;i<n;i++)
+        {
+            currSum=max(currSum+nums[i],nums[i]);
+            maxSoFar=max(maxSoFar,currSum);
+        }
+        return maxSoFar;
+    }
