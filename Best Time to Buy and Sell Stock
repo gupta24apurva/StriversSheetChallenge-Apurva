@@ -1,0 +1,9 @@
+int maxProfit(vector<int>& prices) {
+        int minPrice=INT_MAX,ans=INT_MIN;
+        for(auto it:prices)
+        {
+            minPrice=min(it,minPrice);
+            ans=max(ans,it-minPrice);
+        }
+        return ans;
+    }
