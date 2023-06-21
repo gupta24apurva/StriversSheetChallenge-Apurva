@@ -1,0 +1,22 @@
+ListNode* rotateRight(ListNode* head, int k) {
+        if(head==NULL || head->next==NULL || k==0)
+            return head;
+        ListNode* temp=head;
+        int c=1;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+            c++;
+        }
+        temp->next=head;
+        k%=c;
+        temp=head;
+        int n=c-k;
+        for(int i=1;i<n;i++)
+        {
+            temp=temp->next;
+        }
+        head=temp->next;
+        temp->next=NULL;
+        return head;
+    }
