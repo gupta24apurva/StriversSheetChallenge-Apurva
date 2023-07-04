@@ -1,0 +1,17 @@
+void helper(vector<int>arr,int i,int sum,vector<int>&ans)
+    {
+        if(i==arr.size())
+        {
+            ans.push_back(sum);
+            return;
+        }
+        helper(arr,i+1,sum,ans);
+        helper(arr,i+1,sum+arr[i],ans);
+    }
+    vector<int> subsetSums(vector<int> arr, int n)
+    {
+        // Write Your Code here
+        vector<int>ans;
+        helper(arr,0,0,ans);
+        return ans;
+    }
