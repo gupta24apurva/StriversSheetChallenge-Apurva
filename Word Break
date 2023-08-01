@@ -1,0 +1,51 @@
+class Solution {
+public:
+    // bool helper(string s,int ind,unordered_map<string,int>m)
+    // {
+    //     if(ind==s.length())
+    //         return true;
+        
+    //     string temp="";
+    //     for(int i=ind;i<s.length();i++)
+    //     {
+    //         temp+=s[i];
+    //         if(m[temp])
+    //         {
+    //             if(helper(s,i+1,m))
+    //                 return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+    // bool wordBreak(string s, vector<string>& wordDict) {
+    //     unordered_map<string,int>m;
+    //     for(auto it:wordDict)
+    //         m[it]=1;
+    //     return helper(s,0,m);
+    // }
+
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_map<string,int>m;
+        int n=s.length();
+        for(auto it:wordDict)
+            m[it]=1;
+        
+        vector<int>dp(n+1,0);
+        dp[n]=1;
+
+        for(int i=n-1;i>=0;i--)
+        {
+            string temp="";
+            for(int j=i;j<n;j++)
+            {
+                temp+=s[j];
+                if(m[temp] && dp[j+1])
+                {
+                    dp[i]=1;
+                    break;
+                }
+            }
+        }
+        return dp[0];
+    }
+};
